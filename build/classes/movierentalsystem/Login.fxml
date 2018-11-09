@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="492.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierentalsystem.LoginController">
     <children>
-        <Button fx:id="button" layoutX="274.0" layoutY="231.0" onAction="#handleButtonAction" text="Connect" />
+        <Button fx:id="button" layoutX="15.0" layoutY="231.0" onAction="#handleButtonAction" text="Connect" />
       <Label fx:id="label" layoutX="297.0" layoutY="361.0" style="-fx-background-color: green;" />
       <TableView fx:id="tblData" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="604.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <columns>
@@ -16,5 +16,6 @@
           <TableColumn fx:id="col_value" prefWidth="75.0" text="Value" />
         </columns>
       </TableView>
+      <Button fx:id="btnEditTableData" layoutX="116.0" layoutY="231.0" mnemonicParsing="false" text="Edit" />
     </children>
 </AnchorPane>
