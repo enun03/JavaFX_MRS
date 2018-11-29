@@ -19,11 +19,12 @@ public class MovieRentalSystem extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Views/Customers/Customers.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/Movies/Movies.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setTitle("Movies");
         stage.show();
     }
 
