@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="cbRole" prefHeight="742.0" prefWidth="900.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierentalsystem.Views.CustomersController">
+    <children>
+      <TableView fx:id="tblCustomers" editable="true" layoutX="14.0" layoutY="59.0" prefHeight="509.0" prefWidth="870.0" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="43.0" text="ID" />
+          <TableColumn fx:id="col_firstName" onEditCommit="#onFirstNameChanged" prefWidth="121.0" text="First Name" />
+            <TableColumn fx:id="col_lastName" onEditCommit="#onLastNameChanged" prefWidth="135.0" text="Last Name" />
+            <TableColumn fx:id="col_addr" onEditCommit="#onAddrChanged" prefWidth="213.0" text="Address" />
+            <TableColumn fx:id="col_city" minWidth="0.0" onEditCommit="#onCityChanged" prefWidth="121.0" text="City" />
+            <TableColumn fx:id="col_zip" onEditCommit="#onZipCodeChanged" prefWidth="79.0" text="Zip Code" />
+            <TableColumn fx:id="col_phone" onEditCommit="#onPhoneChanged" prefWidth="157.0" text="Phone" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="8.0" text="Customers" textFill="#9e9d9d" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnDelete" layoutX="789.0" layoutY="696.0" mnemonicParsing="false" style="-fx-background-color: #ff5555;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="48.0" />
+      <Button fx:id="btnAdd" layoutX="717.0" layoutY="696.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: #5992bb;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="120.0" />
+      <Label fx:id="lblCustInfo" layoutX="15.0" layoutY="571.0" textFill="#82b978" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFirstName" layoutX="15.0" layoutY="607.0" promptText="First Name" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="15.0" />
+      <TextField fx:id="txtLastName" layoutX="212.0" layoutY="607.0" promptText="Last Name" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="212.0" />
+      <TextArea fx:id="taAddr" layoutX="15.0" layoutY="644.0" prefHeight="84.0" prefWidth="386.0" promptText="Address" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0" />
+      <TextField fx:id="txtPhone" layoutX="411.0" layoutY="607.0" prefHeight="31.0" prefWidth="215.0" promptText="Phone" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="411.0" />
+      <TextField fx:id="txtCity" layoutX="411.0" layoutY="651.0" prefHeight="31.0" prefWidth="215.0" promptText="City" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="411.0" />
+      <TextField fx:id="txtZipCode" layoutX="411.0" layoutY="696.0" prefHeight="31.0" prefWidth="215.0" promptText="ZipCode" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="411.0" />
+      <TextField fx:id="txtUser" layoutX="637.0" layoutY="607.0" prefHeight="31.0" prefWidth="215.0" promptText="Nombre Usuario" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="637.0" />
+      <ComboBox fx:id="cbRoles" layoutX="637.0" layoutY="651.0" prefHeight="31.0" prefWidth="215.0" promptText="Nivel de Acceso" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="637.0" />
+    </children>
+</AnchorPane>
