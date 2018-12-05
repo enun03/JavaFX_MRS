@@ -41,7 +41,7 @@
       <TextField fx:id="txtPhone" layoutX="411.0" layoutY="607.0" prefHeight="31.0" prefWidth="215.0" promptText="Phone" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="411.0" />
       <TextField fx:id="txtCity" layoutX="411.0" layoutY="651.0" prefHeight="31.0" prefWidth="215.0" promptText="City" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="411.0" />
       <TextField fx:id="txtZipCode" layoutX="411.0" layoutY="696.0" prefHeight="31.0" prefWidth="215.0" promptText="ZipCode" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="411.0" />
-      <TextField fx:id="txtUser" layoutX="637.0" layoutY="607.0" prefHeight="31.0" prefWidth="215.0" promptText="Nombre Usuario" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="637.0" />
-      <ComboBox fx:id="cbRoles" layoutX="637.0" layoutY="651.0" prefHeight="31.0" prefWidth="215.0" promptText="Nivel de Acceso" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="637.0" />
+      <TextField fx:id="txtUser" layoutX="637.0" layoutY="607.0" prefHeight="31.0" prefWidth="215.0" promptText="Username" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="637.0" />
+      <ComboBox fx:id="cbRoles" layoutX="637.0" layoutY="651.0" prefHeight="31.0" prefWidth="215.0" promptText="User Role" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="637.0" />
     </children>
 </AnchorPane>
