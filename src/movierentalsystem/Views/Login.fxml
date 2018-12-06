@@ -19,5 +19,6 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Label fx:id="lblInfo" layoutX="121.0" layoutY="343.0" textAlignment="CENTER" textFill="#fc0202" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="121.0" />
    </children>
 </AnchorPane>

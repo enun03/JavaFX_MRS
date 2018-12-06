@@ -5,20 +5,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierentalsystem.Views.MainController">
+<BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movierentalsystem.Views.MainController">
     <left>
         <VBox prefHeight="639.0" prefWidth="112.0" spacing="7" style="-fx-background-color: #fff;">
-         <Label text="Menu:" />
+         <Label text="Menu:" textFill="#9e9d9d">
+            <font>
+               <Font name="System Italic" size="18.0" />
+            </font></Label>
             <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb; -fx-border-radius: 0px;" text="Customers" textFill="WHITE" userData="Customers.fxml" />
             <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb;" text="Movies" textFill="WHITE" userData="Movies.fxml" />
             <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb;" text="Rentals" textFill="WHITE" userData="Rentals.fxml" />
          <padding>
-            <Insets bottom="2.0" left="2.0" top="5.0" />
+            <Insets left="10.0" right="10.0" top="10.0" />
          </padding>
         </VBox>
     </left>
     <center>
-        <fx:include source="Customers.fxml" />
+        <fx:include source="Rentals.fxml" />
     </center>
 </BorderPane>

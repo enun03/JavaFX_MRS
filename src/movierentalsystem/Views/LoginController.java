@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -50,6 +51,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private Button btnRegister;
+    
+    @FXML
+    private Label lblInfo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -96,6 +100,7 @@ public class LoginController implements Initializable {
         
         if (username.isEmpty() || password.isEmpty()) {
             System.out.println("Username and password is required...");
+            lblInfo.setText("* Username and password is required...");
         } else {
             try {
                 PreparedStatement statement = conn.connect().prepareStatement("SELECT * FROM `users` WHERE UserName=? AND Password=?");
@@ -121,6 +126,7 @@ public class LoginController implements Initializable {
                     redirectUser(user);
                 } else {
                     System.out.println("Username or password is incorrect...");
+                    lblInfo.setText("* Username or password is incorrect...");
                 }
 
             } catch (SQLException ex) {

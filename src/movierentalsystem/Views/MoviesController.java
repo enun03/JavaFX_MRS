@@ -190,6 +190,7 @@ public class MoviesController implements Initializable {
     public void holdMovie(String movie_id) {
         MySQLConnection conn = new MySQLConnection();
         PreparedStatement statement1;
+        PreparedStatement statement2;
         try {
             // Update Cusotmer Data in SQL db
             statement1 = conn.connect().prepareStatement("UPDATE `movie` SET Status='Rented' WHERE ID=?");
@@ -198,6 +199,11 @@ public class MoviesController implements Initializable {
             statement1.close();
             
             // Insert movie to rentals table
+            statement2 = conn.connect().prepareStatement("INSERT INTO `rental` (`movie_id`, `customer_id`, `RentedDate`, `CostRate`) VALUES (?, ?, NOW(), 2.00);");
+            statement2.setString(1, lblID.getText());
+            statement2.setString(2, lblUserID.getText());
+            statement2.executeUpdate();
+            statement2.close();
             
             // Remove from movie list
             int selectedIndex = lvAvailableMovies.getSelectionModel().getSelectedIndex();

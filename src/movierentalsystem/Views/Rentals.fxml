@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="802.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="movierentalsystem.Views.RentalsController">
+   <children>
+      <Label layoutX="22.0" layoutY="14.0" text="Rentals" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblRentals" layoutX="14.0" layoutY="59.0" prefHeight="271.0" prefWidth="570.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
+        <columns>
+          <TableColumn fx:id="colMovieID" prefWidth="70.0" text="Movie ID" />
+          <TableColumn fx:id="colTitle" prefWidth="212.0" text="Movie Title" />
+            <TableColumn fx:id="colCustID" prefWidth="61.0" text="Cust ID" />
+            <TableColumn fx:id="colFirstName" prefWidth="162.0" text="First Name" />
+            <TableColumn fx:id="colLastName" minWidth="0.0" prefWidth="116.0" text="Last Name" />
+            <TableColumn fx:id="colRentedDate" prefWidth="148.0" text="Rented Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnReturn" layoutX="354.0" layoutY="345.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #5992bb;" text="Return Movie" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="134.0" />
+      <Button fx:id="btnAddRental" layoutX="473.0" layoutY="345.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #74ab5c;" text="Add Rental" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="15.0" />
+   </children>
+</AnchorPane>

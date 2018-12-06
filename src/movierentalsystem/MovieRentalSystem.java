@@ -26,6 +26,7 @@ public class MovieRentalSystem extends Application {
         
         stage.setScene(scene);
         stage.setTitle("Login");
+        // Disable sizeable property
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.show();
     }
