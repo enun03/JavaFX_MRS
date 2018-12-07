@@ -24,7 +24,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import movierentalsystem.Models.Customer;
 import movierentalsystem.MySQLConnection;
 /**
  * FXML Controller class
@@ -71,6 +70,15 @@ public class RegisterController implements Initializable {
             try {
                 // TODO
                 register();
+            } catch (IOException ex) {
+                Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        // On edit button click
+        btnCancel.setOnAction((e) -> {    
+            try {
+                redirectUser();
             } catch (IOException ex) {
                 Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
             }

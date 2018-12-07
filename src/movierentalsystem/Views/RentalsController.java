@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Properties.  
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -28,8 +28,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import movierentalsystem.Models.Rental;
 import movierentalsystem.MySQLConnection;
 /**
@@ -62,6 +64,15 @@ public class RentalsController implements Initializable {
 
     @FXML
     private TableColumn<Rental, String> colRentedDate;
+    
+     @FXML
+    private TextField txtCustID;
+
+    @FXML
+    private TextField txtMovieID;
+
+    @FXML
+    private Label lblInfo;
 
     @FXML
     private Button btnReturn;
@@ -82,6 +93,12 @@ public class RentalsController implements Initializable {
         colFirstName.setCellValueFactory(cellData -> cellData.getValue().FirstNameProperty());
         colLastName.setCellValueFactory(cellData -> cellData.getValue().LastNameProperty());
         colRentedDate.setCellValueFactory(cellData -> cellData.getValue().RentedDateProperty());
+        
+        // On add rental button click
+        btnAddRental.setOnAction((e) -> {    
+            // TODO
+            addRental();
+        });
         
         // On return button click
         btnReturn.setOnAction((e) -> {    
@@ -130,7 +147,7 @@ public class RentalsController implements Initializable {
         
         // Statements init
         String sql1= "DELETE FROM `rental` WHERE movie_id='" + rental.getMovieId() +"';";
-        String sql2= "Update `movie` SET Status='Available';";
+        String sql2= "UPDATE `movie` SET Status='Available' WHERE ID = '" + rental.getMovieId() +"';";
         PreparedStatement statement1;
         PreparedStatement statement2;
         
@@ -151,6 +168,94 @@ public class RentalsController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(CustomersController.class.getName()).log(Level.SEVERE, null, ex);
         }            
+    }
+    
+    public void addRental() {
+        // TODO        
+        if (txtMovieID.getText().isEmpty() || txtCustID.getText().isEmpty()) {
+            lblInfo.setText("Movie Id and Customer Id are required...");
+        } else {
+            MySQLConnection conn = new MySQLConnection();
+            int movieId = Integer.parseInt(txtMovieID.getText());  
+            int custId = Integer.parseInt(txtCustID.getText());
+            // Statements init
+            String sql1= "INSERT INTO `rental` (`movie_id`, `customer_id`, `RentedDate`, `CostRate`) VALUES (?, ?, NOW(), 2);";
+            String sql2= "UPDATE `movie` SET Status='Rented' WHERE ID = '" + movieId +"';";
+            PreparedStatement statement1;
+            PreparedStatement statement2;
+
+            try {
+                // Removing rental from db
+                statement1 = conn.connect().prepareStatement(sql1);
+                statement1.setInt(1, movieId);
+                statement1.setInt(2, custId);
+                statement1.executeUpdate();
+                statement1.close();
+
+                // Updating movie status
+                statement2 = conn.connect().prepareStatement(sql2);
+                statement2.executeUpdate(sql2);
+                statement2.close();
+
+                // Add rental to TableView
+                addRentalToTableView();
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomersController.class.getName()).log(Level.SEVERE, null, ex);
+            }           
+        }  
+    }
+    
+    // Adds rental to table view
+    private void addRentalToTableView() {
+        //TODO
+        int latestRentalId = getLatestRentalId();
+        MySQLConnection conn = new MySQLConnection();
+        String sql = "SELECT movie.ID AS MovieID, movie.Title, customer.ID AS CustID, customer.FirstName, customer.LastName, rental.RentedDate FROM ((rental INNER JOIN customer ON rental.customer_id = customer.ID) INNER JOIN movie ON rental.movie_id = movie.ID) WHERE rental.ID = ?";
+        try {
+            PreparedStatement statement = conn.connect().prepareStatement(sql);
+            statement.setInt(1, latestRentalId);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                oblRentalTableData.add(new Rental(
+                    Integer.toString(rs.getInt("MovieID")),
+                    rs.getString("Title"),
+                    Integer.toString(rs.getInt("CustID")),
+                    rs.getString("FirstName"),
+                    rs.getString("LastName"),
+                    rs.getDate("RentedDate").toString()
+                ));
+            }
+            
+            rs.close();
+            statement.close();
+            
+            tblRentals.setItems(oblRentalTableData);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // Gets latest rental ID
+    private int getLatestRentalId() {
+        int latestID = 0;
+        // TODO        
+        MySQLConnection conn = new MySQLConnection();
+        String sql = "SELECT MAX(ID) as ID FROM `rental`";
+        try {
+            PreparedStatement statement = conn.connect().prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()) {
+                latestID =rs.getInt("ID");
+            }
+            
+            rs.close();
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return latestID;
     }
     
     // Shows alert confirmation for rental
@@ -202,5 +307,5 @@ public class RentalsController implements Initializable {
     public static long getDifferenceDays(Date d1, Date d2) {
         long diff = d2.getTime() - d1.getTime();
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-    }    
+    }
 }

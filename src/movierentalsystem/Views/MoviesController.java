@@ -20,16 +20,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import movierentalsystem.Models.AvailMovie;
 import movierentalsystem.Models.Movie;
 import movierentalsystem.Models.User;
 import movierentalsystem.MySQLConnection;
-import movierentalsystem.Views.CustomersController;
 
 /**
  * FXML Controller class
@@ -219,5 +216,4 @@ public class MoviesController implements Initializable {
         lblUserName.setText(user.getUserName());
         lblUserID.setText(user.getID());
     }
-    
 }

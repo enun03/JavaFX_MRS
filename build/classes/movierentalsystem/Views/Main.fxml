@@ -15,7 +15,7 @@
                <Font name="System Italic" size="18.0" />
             </font></Label>
             <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb; -fx-border-radius: 0px;" text="Customers" textFill="WHITE" userData="Customers.fxml" />
-            <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb;" text="Movies" textFill="WHITE" userData="Movies.fxml" />
+            <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb;" text="Movies" textFill="WHITE" userData="ManageMovies.fxml" />
             <Button onAction="#handleShowView" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: #5992bb;" text="Rentals" textFill="WHITE" userData="Rentals.fxml" />
          <padding>
             <Insets left="10.0" right="10.0" top="10.0" />
